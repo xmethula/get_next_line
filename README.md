@@ -2,7 +2,7 @@
 
 __Installation:__
 
-* `git clone https://github.com/mikim42/Get_next_line.git`
+* `https://github.com/xrmethula/get_next_line.git`
 
 **Usage:**
 * `get next line is a function that reads a file line by line`
