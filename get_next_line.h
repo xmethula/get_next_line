@@ -6,7 +6,7 @@
 /*   By: xmethula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 13:14:00 by xmethula          #+#    #+#             */
-/*   Updated: 2019/07/02 11:24:17 by xmethula         ###   ########.fr       */
+/*   Updated: 2019/07/04 12:51:43 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 
-int		ft_new_line(char **s, char **line, int fd, int ret);
+int		new_line(char **s, char **line, int fd, int ret);
 int		get_next_line(const int fd, char **line);
 
 #endif
