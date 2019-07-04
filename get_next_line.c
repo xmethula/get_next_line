@@ -6,13 +6,13 @@
 /*   By: xmethula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 11:53:58 by xmethula          #+#    #+#             */
-/*   Updated: 2019/07/04 12:38:46 by xmethula         ###   ########.fr       */
+/*   Updated: 2019/07/04 12:51:30 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		get_new_line(char **s, char **line, int fd, int res)
+int		new_line(char **s, char **line, int fd, int res)
 {
 	char	*tmp;
 	int		i;
@@ -63,5 +63,5 @@ int		get_next_line(const int fd, char **line)
 		return (-1);
 	else if (res == 0 && (s[fd] == NULL || s[fd][0] == '\0'))
 		return (0);
-	return (get_new_line(s, line, fd, res));
+	return (new_line(s, line, fd, res));
 }
