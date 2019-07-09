@@ -51,6 +51,7 @@ int					get_next_line(const int fd, char **line)
 		str[fd] = ft_strnew(0);
 	while (!(ft_strchr(str[fd], '\n')) && (res = read(fd, buf, BUFF_SIZE)))
 	{
+		buf[res] = '\0';
 		tmp = ft_strjoin(str[fd], buf);
 		free(str[fd]);
 		str[fd] = ft_strdup(tmp);
