@@ -3,65 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: xmethula <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lmohlala <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/02 11:53:58 by xmethula          #+#    #+#             */
-/*   Updated: 2019/07/04 12:51:30 by xmethula         ###   ########.fr       */
+/*   Created: 2019/07/05 07:17:53 by lmohlala          #+#    #+#             */
+/*   Updated: 2019/07/09 15:54:00 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int		new_line(char **s, char **line, int fd, int res)
+static int			ft_readline(char **arrayh, char **line)
 {
-	char	*tmp;
-	int		i;
+	char			*temp;
 
-	i = 0;
-	while (s[fd][i] != '\n' && s[fd][i] != '\0')
-		i++;
-	if (s[fd][i] == '\n')
+	if ((*arrayh)[0] == '\0')
+		return (0);
+	if (ft_strchr(*arrayh, '\n') != NULL)
 	{
-		*line = ft_strsub(s[fd], 0, i);
-		tmp = ft_strdup(s[fd] + i + 1);
-		free(s[fd]);
-		s[fd] = tmp;
-		if (s[fd][0] == '\0')
-			ft_strdel(&s[fd]);
+		*(ft_strchr(*arrayh, '\n')) = '\0';
+		*line = ft_strdup(*arrayh);
+		temp = ft_strdup(ft_strchr(*arrayh, '\0') + 1);
+		free(*arrayh);
+		if (temp)
+		{
+			*arrayh = ft_strdup(temp);
+			free(temp);
+		}
 	}
-	else if (s[fd][i] == '\0')
+	else
 	{
-		if (res == BUFF_SIZE)
-			return (get_next_line(fd, line));
-		*line = ft_strdup(s[fd]);
-		ft_strdel(&s[fd]);
+		*line = ft_strdup(*arrayh);
+		ft_memdel((void **)arrayh);
 	}
 	return (1);
 }
 
-int		get_next_line(const int fd, char **line)
+int					get_next_line(const int fd, char **line)
 {
-	static char	*s[255];
-	char		buf[BUFF_SIZE + 1];
-	char		*tmp;
-	int			res;
+	int				rval;
+	char			buf[BUFF_SIZE + 1];
+	static char		*arr[1000];
+	char			*temp;
 
-	if (fd < 0 || line == NULL)
+	if (fd < 0 || read(fd, buf, 0) < 0 || line == NULL)
 		return (-1);
-	while ((res = read(fd, buf, BUFF_SIZE)) > 0)
+	if (!(arr[fd]))
+		arr[fd] = ft_strnew(0);
+	while (!ft_strchr(arr[fd], '\n') && (rval = read(fd, buf, BUFF_SIZE)))
 	{
-		buf[res] = '\0';
-		if (s[fd] == NULL)
-			s[fd] = ft_strnew(1);
-		tmp = ft_strjoin(s[fd], buf);
-		free(s[fd]);
-		s[fd] = tmp;
-		if (ft_strchr(buf, '\n'))
-			break ;
+		buf[rval] = '\0';
+		temp = ft_strjoin(arr[fd], buf);
+		free(arr[fd]);
+		arr[fd] = ft_strdup(temp);
+		free(temp);
 	}
-	if (res < 0)
+	if (rval < 0)
 		return (-1);
-	else if (res == 0 && (s[fd] == NULL || s[fd][0] == '\0'))
-		return (0);
-	return (new_line(s, line, fd, res));
+	return (ft_readline(&arr[fd], line));
 }
