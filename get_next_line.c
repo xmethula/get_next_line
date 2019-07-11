@@ -6,7 +6,7 @@
 /*   By: lmohlala <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 07:17:53 by lmohlala          #+#    #+#             */
-/*   Updated: 2019/07/09 16:57:46 by xmethula         ###   ########.fr       */
+/*   Updated: 2019/07/11 08:08:28 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int			assline(char **arrstr, char **line)
 
 	if ((*arrstr)[0] == '\0')
 		return (0);
-	if (ft_strchr(*arrstr, '\n') != NULL)
+	if (ft_strchr(*arrstr, '\n'))
 	{
 		*(ft_strchr(*arrstr, '\n')) = '\0';
 		*line = ft_strdup(*arrstr);
