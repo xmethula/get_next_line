@@ -6,7 +6,7 @@
 /*   By: lmohlala <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/05 07:17:53 by lmohlala          #+#    #+#             */
-/*   Updated: 2019/07/12 07:42:15 by xmethula         ###   ########.fr       */
+/*   Updated: 2019/07/12 09:06:19 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ static int			assignline(char **arr, char **line)
 		tmp = ft_strdup(ft_strchr(*arr, '\0') + 1);
 		free(*arr);
 		if (tmp != NULL)
-		{
-			*arr = ft_strdup(tmp);
-			free(tmp);
-		}
+			*arr = tmp;
 	}
 	else
 	{
@@ -51,11 +48,9 @@ int					get_next_line(const int fd, char **line)
 		arr[fd] = ft_strnew(0);
 	while (!(ft_strchr(arr[fd], '\n')) && (res = read(fd, buf, BUFF_SIZE)))
 	{
-		buf[res] = '\0';
 		tmp = ft_strjoin(arr[fd], buf);
 		free(arr[fd]);
-		arr[fd] = ft_strdup(tmp);
-		free(tmp);
+		arr[fd] = tmp;
 	}
 	if (res < 0)
 		return (-1);
