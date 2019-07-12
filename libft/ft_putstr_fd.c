@@ -6,7 +6,7 @@
 /*   By: xmethula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/07 10:44:31 by xmethula          #+#    #+#             */
-/*   Updated: 2019/06/13 12:21:39 by xmethula         ###   ########.fr       */
+/*   Updated: 2019/07/09 11:40:46 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	size_t i;
+	int		i;
 
 	i = 0;
 	if (s != NULL)

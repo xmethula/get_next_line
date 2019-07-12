@@ -6,11 +6,24 @@
 /*   By: xmethula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 08:06:22 by xmethula          #+#    #+#             */
-/*   Updated: 2019/06/25 12:27:19 by xmethula         ###   ########.fr       */
+/*   Updated: 2019/07/09 12:34:02 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void		ft_start(char const *s, size_t *i)
+{
+	while ((s[*i] == ' ') || (s[*i] == '\n') || (s[*i] == '\t'))
+		(*i)++;
+}
+
+static void		ft_end(char const *s, size_t *j)
+{
+	*j = ft_strlen(s) - 1;
+	while ((s[*j] == ' ') || (s[*j] == '\n') || (s[*j] == '\t'))
+		(*j)--;
+}
 
 char			*ft_strtrim(char const *s)
 {

@@ -6,7 +6,7 @@
 /*   By: xmethula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/27 08:49:02 by xmethula          #+#    #+#             */
-/*   Updated: 2019/05/27 13:19:38 by xmethula         ###   ########.fr       */
+/*   Updated: 2019/07/10 15:46:39 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,8 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
 	char	*ptr;
 
-	i = 0;
 	ptr = (char *)s;
-	while (i < n)
-	{
-		ptr[i] = '\0';
-		i++;
-	}
+	ft_memset(ptr, '\0', n);
 }

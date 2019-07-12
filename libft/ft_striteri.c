@@ -6,7 +6,7 @@
 /*   By: xmethula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/10 07:59:09 by xmethula          #+#    #+#             */
-/*   Updated: 2019/06/24 15:54:51 by xmethula         ###   ########.fr       */
+/*   Updated: 2019/07/09 10:35:53 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	{
 		while (s[i] != '\0')
 		{
-			f(i, s + i);
+			f(i, &s[i]);
 			i++;
 		}
 	}
