@@ -6,13 +6,13 @@
 /*   By: xmethula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/13 13:44:33 by xmethula          #+#    #+#             */
-/*   Updated: 2019/07/13 13:44:42 by xmethula         ###   ########.fr       */
+/*   Updated: 2019/07/13 13:48:28 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int			assignline(char **arr, char **line)
+static	int			assignline(char **arr, char **line)
 {
 	char			*tmp;
 
@@ -40,10 +40,10 @@ static int			assignline(char **arr, char **line)
 
 int					get_next_line(const int fd, char **line)
 {
-	static char	*arr[999];
-	char		buf[BUFF_SIZE + 1];
-	char		*tmp;
-	int		res;
+	static char		*arr[999];
+	char			buf[BUFF_SIZE + 1];
+	char			*tmp;
+	int				res;
 
 	if (fd < 0 || read(fd, buf, 0) < 0 || line == NULL)
 		return (-1);
