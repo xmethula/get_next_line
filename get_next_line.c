@@ -5,45 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: xmethula <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/13 13:44:33 by xmethula          #+#    #+#             */
-/*   Updated: 2019/07/13 13:48:28 by xmethula         ###   ########.fr       */
+/*   Created: 2019/07/13 14:17:26 by xmethula          #+#    #+#             */
+/*   Updated: 2019/07/13 14:18:05 by xmethula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static	int			assignline(char **arr, char **line)
+static int			assignline(char **arrstr, char **line)
 {
 	char			*tmp;
 
-	if ((*arr)[0] == '\0')
+	if ((*arrstr)[0] == '\0')
 		return (0);
-	if (ft_strchr(*arr, '\n') != NULL)
+	if (ft_strchr(*arrstr, '\n') != NULL)
 	{
-		*(ft_strchr(*arr, '\n')) = '\0';
-		*line = ft_strdup(*arr);
-		tmp = ft_strdup(ft_strchr(*arr, '\0') + 1);
-		free(*arr);
+		*(ft_strchr(*arrstr, '\n')) = '\0';
+		*line = ft_strdup(*arrstr);
+		tmp = ft_strdup(ft_strchr(*arrstr, '\0') + 1);
+		free(*arrstr);
 		if (tmp)
 		{
-			*arr = ft_strdup(tmp);
+			*arrstr = ft_strdup(tmp);
 			free(tmp);
 		}
 	}
 	else
 	{
-		*line = ft_strdup(*arr);
-		ft_strdel(arr);
+		*line = ft_strdup(*arrstr);
+		ft_strdel(arrstr);
 	}
 	return (1);
 }
 
 int					get_next_line(const int fd, char **line)
 {
-	static char		*arr[999];
-	char			buf[BUFF_SIZE + 1];
-	char			*tmp;
 	int				res;
+	char			buf[BUFF_SIZE + 1];
+	static char		*arr[999];
+	char			*tmp;
 
 	if (fd < 0 || read(fd, buf, 0) < 0 || line == NULL)
 		return (-1);
