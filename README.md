@@ -1,13 +1,12 @@
 # get_next_line
+The aim of this project is to code a function that returns a line
+ending with a newline, read from a file descriptor.
 
-__Installation:__
+### Getting Started:
+* `clone/download repo`
+* `cd get_next_line`
 
-* `https://github.com/xrmethula/get_next_line.git`
-
-**Usage:**
-* `get next line is a function that reads a file line by line`
-
-**Return value:**
+### Return value:
 * `return 1 when it read a line`
 * `return 0 when it finished reading a file`
 * `return -1 when an error occurs`
